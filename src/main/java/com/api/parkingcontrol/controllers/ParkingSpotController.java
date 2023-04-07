@@ -16,8 +16,7 @@ import java.time.ZoneId;
 @RequestMapping("/parking-spot")
 public class ParkingSpotController {
 
-    // criando ponto de injecao
-    // ------------------------------------------
+    // criando ponto de injecao -----------------
     final ParkingSpotService parkingSpotService;
 
     public ParkingSpotController(ParkingSpotService parkingSpotService) {
@@ -25,13 +24,13 @@ public class ParkingSpotController {
     }
     // ------------------------------------------
 
-    // criando método POST
-    // ------------------------------------------
+
+    // criando método POST ----------------------
     @PostMapping
     public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto){
-        var parkingSpotModel = new ParkingSpotModel();
-        BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel);
-        parkingSpotModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
+        var parkingSpotModel = new ParkingSpotModel(); // antigamente seria: ParkingSpotModel parkingSpotModel = new ParkingSpotModel();
+        BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel); // convertendo Dot em Model
+        parkingSpotModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC"))); // setando a data automaticamente
 
         return ResponseEntity.status(HttpStatus.CREATED).body(parkingSpotService.save(parkingSpotModel));
     }
