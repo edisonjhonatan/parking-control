@@ -9,7 +9,7 @@ import java.util.UUID;
 public interface ParkingSpotRepository extends JpaRepository<ParkingSpotModel, UUID> {
 
     // JPA nos fornece métodos prontos
-    // A anotation @repository é para transações do BD do spring
+    // A anotation @repository é para transações do BD do Spring, é um ESTEREÓTIPO do String
 
 
 
