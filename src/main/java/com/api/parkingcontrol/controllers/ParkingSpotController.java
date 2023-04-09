@@ -3,9 +3,8 @@ package com.api.parkingcontrol.controllers;
 import com.api.parkingcontrol.dtos.ParkingSpotDto;
 import com.api.parkingcontrol.models.ParkingSpotModel;
 import com.api.parkingcontrol.services.ParkingSpotService;
+import java.awt.List;
 import jakarta.validation.Valid;
-import jakarta.validation.OverridesAttribute.List;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,11 +52,11 @@ public class ParkingSpotController {
     }
     // ------------------------------------------
 
+    // criando método GET -----------------------
     @GetMapping
-    public ResponseEntity<List<ParkingSpotModel>> getAllParkingSpots(){
+    public ResponseEntity<java.util.List<ParkingSpotModel>> getAllParkingSpots() {
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll());
     }
-
-
+    // ------------------------------------------
 
 }
